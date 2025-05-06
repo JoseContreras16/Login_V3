@@ -1,0 +1,7 @@
+{
+  "name": "Login_V3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
