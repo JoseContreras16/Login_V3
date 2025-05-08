@@ -1,2 +1,95 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+body {
+    font-family: 'Cinzel', serif;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+    color: white;
+  }
+  
+  .neon-input {
+    background: transparent;
+    border: 1px solid #888;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    font-family: 'Cinzel', serif;
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .neon-input:focus {
+    box-shadow: 0 0 10px gold;
+  }
+  
+  .btn-neon {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, black, white, gray, blue);
+    color: gold;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .btn-neon:hover {
+    box-shadow: 0 0 15px green;
+  }
+  
+  .section-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .form-box {
+    width: 45%;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    margin-top: 20px;
+    color: white;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  
+  .input-wrapper {
+    position: relative;
+  }
+  
+  .fade-star {
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    color: gold;
+    opacity: 1;
+    animation: fadeOut 0.8s ease forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.5); }
+  }
+  
