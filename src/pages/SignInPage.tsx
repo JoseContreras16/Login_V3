@@ -78,9 +78,10 @@ const SignInPage: React.FC = () => {
 
       if (data.result && data.result.length > 0) {
         const result = data.result[0];
-        if (result.value === '1' && result.error === '') {
+          if (result.value === '1' && result.error === '') {
           setToastMessage(t.toastLogin);
           setToastColor('success');
+          localStorage.setItem('loggedInUser', loginEmail);
           history.push('/home');
         } else {
           setToastMessage(result.msg || t.toastWrongPassword);
