@@ -2,13 +2,17 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import AuthPage from './pages/AuthPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+        <Route path="/signin" component={SignInPage} exact />
+        <Route path="/signup" component={SignUpPage} exact />
         <Route path="/auth" component={AuthPage} exact />
-        <Redirect exact from="/" to="/auth" />
+        <Redirect exact from="/" to="/signin" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
