@@ -50,9 +50,21 @@ const SignInPage: React.FC = () => {
     setSavedPassword(storedPassword);
   }, []);
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleLogin = () => {
     if (!loginEmail || !loginPassword) {
       setToastMessage(t.toastEmptyFields);
+      setToastColor('danger');
+      setShowToast(true);
+      return;
+    }
+
+    if (!validateEmail(loginEmail)) {
+      setToastMessage('Formato de correo inválido');
       setToastColor('danger');
       setShowToast(true);
       return;
@@ -97,7 +109,7 @@ const SignInPage: React.FC = () => {
           <div className="input-wrapper">
             <input
               type="email"
-              className="neon-input"
+              className="neon-input email-input-icon"
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
             />
