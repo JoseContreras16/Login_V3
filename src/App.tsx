@@ -4,6 +4,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import AuthPage from './pages/AuthPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import Home from './pages/Home';
 
 const App: React.FC = () => (
   <IonApp>
@@ -12,6 +13,7 @@ const App: React.FC = () => (
         <Route path="/signin" component={SignInPage} exact />
         <Route path="/signup" component={SignUpPage} exact />
         <Route path="/auth" component={AuthPage} exact />
+        <Route path="/home" component={Home} exact />
         <Redirect exact from="/" to="/signin" />
       </IonRouterOutlet>
     </IonReactRouter>

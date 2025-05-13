@@ -50,12 +50,7 @@ const SignInPage: React.FC = () => {
     setSavedPassword(storedPassword);
   }, []);
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!loginEmail || !loginPassword) {
       setToastMessage(t.toastEmptyFields);
       setToastColor('danger');
@@ -63,21 +58,40 @@ const SignInPage: React.FC = () => {
       return;
     }
 
-    if (!validateEmail(loginEmail)) {
-      setToastMessage('Formato de correo inválido');
-      setToastColor('danger');
-      setShowToast(true);
-      return;
-    }
+    try {
+      const response = await fetch('https://smartloansbackend.azurewebsites.net/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          logins: [
+            {
+              username: loginEmail,
+              password: loginPassword
+            }
+          ]
+        })
+      });
 
-    if (
-      loginEmail === savedEmail &&
-      loginPassword === savedPassword
-    ) {
-      setToastMessage(t.toastLogin);
-      setToastColor('success');
-    } else {
-      setToastMessage(t.toastWrongPassword);
+      const data = await response.json();
+
+      if (data.result && data.result.length > 0) {
+        const result = data.result[0];
+        if (result.value === '1' && result.error === '') {
+          setToastMessage(t.toastLogin);
+          setToastColor('success');
+          history.push('/home');
+        } else {
+          setToastMessage(result.msg || t.toastWrongPassword);
+          setToastColor('danger');
+        }
+      } else {
+        setToastMessage(t.toastWrongPassword);
+        setToastColor('danger');
+      }
+    } catch (error) {
+      setToastMessage('Error en la conexión al servidor');
       setToastColor('danger');
     }
 
