@@ -5,7 +5,7 @@ import './AuthPage.css';
 
 const translations = {
   es: {
-    loginTitle: 'Iniciar Sesión_V3',
+    loginTitle: 'Iniciar Sesión',
     email: 'Correo Electrónico',
     password: 'Contraseña',
     login: 'Ingresar',
@@ -16,7 +16,7 @@ const translations = {
     goToRegister: '¿No tienes cuenta? Regístrate'
   },
   en: {
-    loginTitle: 'Login_v3',
+    loginTitle: 'Login',
     email: 'Email',
     password: 'Password',
     login: 'Login',
