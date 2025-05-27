@@ -42,6 +42,7 @@ const SignInPage: React.FC = () => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [toastColor, setToastColor] = useState<'success' | 'danger'>('success');
+  const [rememberMe, setRememberMe] = useState(false);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('email') || '';
@@ -82,6 +83,7 @@ const SignInPage: React.FC = () => {
           setToastMessage(t.toastLogin);
           setToastColor('success');
           localStorage.setItem('loggedInUser', loginEmail);
+          handleRememberMe();
           history.push('/home');
         } else {
           setToastMessage(result.msg || t.toastWrongPassword);
@@ -101,6 +103,16 @@ const SignInPage: React.FC = () => {
 
   const goToSignUp = () => {
     history.push('/signup');
+  };
+
+  const handleRememberMe = () => {
+    if (rememberMe) {
+      localStorage.setItem('email', loginEmail);
+      localStorage.setItem('password', loginPassword);
+    } else {
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+    }
   };
 
   return (
@@ -144,6 +156,18 @@ const SignInPage: React.FC = () => {
             >
               {showPasswordLogin ? '🙈' : '👁️'}
             </span>
+          </div>
+
+          <div style={{ marginTop: '0.5rem' }}>
+            <label style={{ color: '#0ff', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                style={{ marginRight: '0.5rem' }}
+              />
+              Recuérdame
+            </label>
           </div>
 
           <button className="btn-neon" onClick={handleLogin}>
