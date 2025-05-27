@@ -152,6 +152,13 @@ const SignInPage: React.FC = () => {
 
           <p
             style={{ marginTop: '1rem', cursor: 'pointer', color: '#0ff' }}
+            onClick={() => history.push('/forgot-password')}
+          >
+            ¿Has olvidado la contraseña?
+          </p>
+
+          <p
+            style={{ marginTop: '1rem', cursor: 'pointer', color: '#0ff' }}
             onClick={goToSignUp}
           >
             {t.goToRegister}
