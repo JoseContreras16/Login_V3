@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  background-color: #fff;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  justify-items: center;
+}
+
+.custom-card {
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  width: 180px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ionic-style Colors */
+.primary { background-color: #3880ff; }
+.secondary { background-color: #3dc2ff; }
+.tertiary { background-color: #7044ff; }
+.success { background-color: #10dc60; }
+.warning { background-color: #ffce00; color: #000; }
+.danger { background-color: #f04141; }
+.light { background-color: #f4f5f8; color: #000; }
+.medium { background-color: #989aa2; }
+.dark { background-color: #222428; }
+
+.card-subtitle {
+  font-size: 0.75rem;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+}
+
+.card-content {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
